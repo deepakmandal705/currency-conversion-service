@@ -10,11 +10,14 @@ import com.deepak.currencyconversionservice.bean.ConversionValue;
 //Hard coded currency-exchange-service URLs
 //@FeignClient(name = "currency-exchange-service", url="localhost:8000")
 
-@FeignClient(name = "currency-exchange-service")
+//@FeignClient(name = "currency-exchange-service")
+
+@FeignClient(name = "netflix-zuul-api-gateway-server")
 @RibbonClient(name = "currency-exchange-service")
 public interface CurrencyExchangeServiceProxy {
 
-	@GetMapping("currency-exchange-jpa/from/{from}/to/{to}")
+	//@GetMapping("currency-exchange-jpa/from/{from}/to/{to}")
+	@GetMapping("currency-exchange-service/currency-exchange-jpa/from/{from}/to/{to}")
 	public ConversionValue retrieveExchangeValue(@PathVariable("from") String from,
 			@PathVariable("to") String to);
 			
